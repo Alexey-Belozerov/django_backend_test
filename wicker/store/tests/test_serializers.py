@@ -14,12 +14,12 @@ class WickerSerializerTestCase(TestCase):
             {
                 'id': wicker_1.id,
                 'name': 'Test wicker 1',
-                'price': 1500
+                'price': '1500.00'
             },
             {
                 'id': wicker_2.id,
                 'name': 'Test wicker 2',
-                'price': 2815
+                'price': '2815.00'
             },
         ]
-
+        self.assertEqual(expected_data, data)
