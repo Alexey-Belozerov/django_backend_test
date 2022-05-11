@@ -10,4 +10,16 @@ class WickerSerializerTestCase(TestCase):
         wicker_1 = Wicker.objects.create(name='Test wicker 1', price=1500)
         wicker_2 = Wicker.objects.create(name='Test wicker 2', price=2815)
         data = WickerSerializer([wicker_1, wicker_2], many=True).data
+        expected_data = [
+            {
+                'id': wicker_1.id,
+                'name': 'Test wicker 1',
+                'price': 1500
+            },
+            {
+                'id': wicker_2.id,
+                'name': 'Test wicker 2',
+                'price': 2815
+            },
+        ]
 
