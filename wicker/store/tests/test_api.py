@@ -1,4 +1,5 @@
 from django.urls import reverse
+from rest_framework import status
 from rest_framework.test import APITestCase
 
 from store.models import Wicker
@@ -13,4 +14,5 @@ class WickerApiTestCase(APITestCase):
         url = reverse('wicker-list')
         response = self.client.get(url)
         serializer_data = WickerSerializer([wicker_1, wicker_2], many=True).data
-
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+        self.assertEqual(serializer_data, response.data)
