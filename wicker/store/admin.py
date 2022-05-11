@@ -6,4 +6,4 @@ from store.models import Wicker
 
 @admin.register(Wicker)
 class WickerAdmin(ModelAdmin):
-    list_display = ['name', 'price']
+    list_display = ['name', 'price', 'author_name']

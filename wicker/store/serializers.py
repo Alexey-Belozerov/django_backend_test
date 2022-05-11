@@ -7,4 +7,4 @@ class WickerSerializer(ModelSerializer):
     class Meta:
         model = Wicker
         fields = '__all__'
-        # fields = ['id', 'name', 'price']
+        # fields = ['id', 'name', 'price', 'author_name']
