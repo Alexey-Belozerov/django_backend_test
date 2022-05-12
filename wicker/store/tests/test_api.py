@@ -67,9 +67,9 @@ class WickerApiTestCase(APITestCase):
     def test_update(self):
         url = reverse('wicker-list')
         data = {
-            'name': 'Корзина Победа',
-            'price': '3700.00',
-            'author_name': 'Красная Виктория'
+            'name': self.wicker_1.name,
+            'price': 4200,
+            'author_name': self.wicker_1.author_name
         }
         json_data = json.dumps(data)
         self.client.force_login(self.user)
