@@ -60,6 +60,19 @@ class WickerApiTestCase(APITestCase):
         json_data = json.dumps(data)
         self.client.force_login(self.user)
         response = self.client.post(url, data=json_data,
-                                   content_type='application/json')
+                                    content_type='application/json')
         self.assertEqual(status.HTTP_201_CREATED, response.status_code)
         self.assertEqual(4, Wicker.objects.all().count())
+
+    def test_update(self):
+        url = reverse('wicker-list')
+        data = {
+            'name': 'Корзина Победа',
+            'price': '3700.00',
+            'author_name': 'Красная Виктория'
+        }
+        json_data = json.dumps(data)
+        self.client.force_login(self.user)
+        response = self.client.post(url, data=json_data,
+                                    content_type='application/json')
+        self.assertEqual(status.HTTP_201_CREATED, response.status_code)
