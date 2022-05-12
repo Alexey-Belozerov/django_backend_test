@@ -74,5 +74,6 @@ class WickerApiTestCase(APITestCase):
         json_data = json.dumps(data)
         self.client.force_login(self.user)
         response = self.client.put(url, data=json_data,
-                                    content_type='application/json')
+                                   content_type='application/json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
+        self.assertEqual(4200, self.wicker_1.price)
