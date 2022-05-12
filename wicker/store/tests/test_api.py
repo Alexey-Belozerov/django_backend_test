@@ -75,4 +75,4 @@ class WickerApiTestCase(APITestCase):
         self.client.force_login(self.user)
         response = self.client.put(url, data=json_data,
                                     content_type='application/json')
-        self.assertEqual(status.HTTP_201_CREATED, response.status_code)
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
