@@ -50,6 +50,7 @@ class WickerApiTestCase(APITestCase):
         self.assertEqual(serializer_data, response.data)
 
     def test_create(self):
+        self.assertEqual(3, Wicker.objects.all().count())
         url = reverse('wicker-list')
         data = {
             'name': 'Корзина Победа',
@@ -61,3 +62,4 @@ class WickerApiTestCase(APITestCase):
         response = self.client.post(url, data=json_data,
                                    content_type='application/json')
         self.assertEqual(status.HTTP_201_CREATED, response.status_code)
+        self.assertEqual(4, Wicker.objects.all().count())
