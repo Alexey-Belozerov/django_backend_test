@@ -21,6 +21,13 @@ class WickerApiTestCase(APITestCase):
 
     def test_get_filter(self):
         url = reverse('wicker-list')
+        response = self.client.get(url, data={'price': 1500})
+        serializer_data = WickerSerializer([self.wicker_1], many=True).data
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+        self.assertEqual(serializer_data, response.data)
+
+    def test_get_search(self):
+        url = reverse('wicker-list')
         response = self.client.get(url, data={'price': 2815})
         serializer_data = WickerSerializer([self.wicker_2, self.wicker_3], many=True).data
         self.assertEqual(status.HTTP_200_OK, response.status_code)
