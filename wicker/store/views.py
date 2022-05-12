@@ -13,5 +13,5 @@ class WickerViewSet(ModelViewSet):
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filter_fields = ['price']
     search_fields = ['name', 'author_name']
-    ordering_fields = ['name', 'price']
+    ordering_fields = ['price', 'author_name']
 
