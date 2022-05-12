@@ -44,3 +44,15 @@ class WickerApiTestCase(APITestCase):
                                             self.wicker_3], many=True).data
         self.assertEqual(status.HTTP_200_OK, response.status_code)
         self.assertEqual(serializer_data, response.data)
+
+    def test_create(self):
+        url = reverse('wicker-list')
+        data = {
+            'name': 'Корзина Розалия',
+            'price': '2500.00',
+            'author_name': 'Ветрова Мария'
+        }
+        response = self.client.get(url, data={'price': 2815})
+
+        self.assertEqual(status.HTTP_201_CREATED, response.status_code)
+
