@@ -12,6 +12,6 @@ class WickerViewSet(ModelViewSet):
     serializer_class = WickerSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filter_fields = ['price']
-    search_fields = ['author_name', 'price']
+    search_fields = ['name', 'author_name']
     ordering_fields = ['name', 'price']
 
