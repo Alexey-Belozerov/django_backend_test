@@ -65,7 +65,7 @@ class WickerApiTestCase(APITestCase):
         self.assertEqual(4, Wicker.objects.all().count())
 
     def test_update(self):
-        url = reverse('wicker-list')
+        url = reverse('wicker-list', args=(self.wicker_1.id,))
         data = {
             'name': self.wicker_1.name,
             'price': 4200,
