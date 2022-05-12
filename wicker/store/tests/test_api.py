@@ -1,3 +1,5 @@
+import json
+
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -48,11 +50,13 @@ class WickerApiTestCase(APITestCase):
     def test_create(self):
         url = reverse('wicker-list')
         data = {
-            'name': 'Корзина Розалия',
-            'price': '2500.00',
-            'author_name': 'Ветрова Мария'
+            'name': 'Корзина Победа',
+            'price': '3700.00',
+            'author_name': 'Красная Виктория'
         }
-        response = self.client.get(url, data={'price': 2815})
+        json_data = json.dumps(data)
+        response = self.client.get(url)
+
 
         self.assertEqual(status.HTTP_201_CREATED, response.status_code)
 
