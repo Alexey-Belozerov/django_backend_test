@@ -55,8 +55,6 @@ class WickerApiTestCase(APITestCase):
             'author_name': 'Красная Виктория'
         }
         json_data = json.dumps(data)
-        response = self.client.get(url)
-
-
+        response = self.client.get(url, data=json_data,
+                                   content_type='application/json')
         self.assertEqual(status.HTTP_201_CREATED, response.status_code)
-
