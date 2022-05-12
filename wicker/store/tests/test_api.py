@@ -1,5 +1,6 @@
 import json
 
+from django.contrib.auth.models import User
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -10,6 +11,7 @@ from store.serializers import WickerSerializer
 
 class WickerApiTestCase(APITestCase):
     def setUp(self):
+        self.user = User.objects.create(username='test_username')
         self.wicker_1 = Wicker.objects.create(name='Test wicker 1', price=1500,
                                               author_name='Author 1')
         self.wicker_2 = Wicker.objects.create(name='Test wicker 2', price=2815,
@@ -55,6 +57,7 @@ class WickerApiTestCase(APITestCase):
             'author_name': 'Красная Виктория'
         }
         json_data = json.dumps(data)
+        self.client.force_login(self.user)
         response = self.client.post(url, data=json_data,
                                    content_type='application/json')
         self.assertEqual(status.HTTP_201_CREATED, response.status_code)
