@@ -115,5 +115,21 @@ class WickerApiTestCase(APITestCase):
         self.assertEqual(1500, self.wicker_1.price)
 
     def test_update_not_owner_but_staff(self):
+        self.user2 = User.objects.create(username='test_username2', is_staff=True)
+        url = reverse('wicker-detail', args=(self.wicker_1.id,))
+        data = {
+            'name': self.wicker_1.name,
+            'price': 4200,
+            'author_name': self.wicker_1.author_name
+        }
+        json_data = json.dumps(data)
+        self.client.force_login(self.user2)
+        response = self.client.put(url, data=json_data,
+                                   content_type='application/json')
+        self.assertEqual(status.HTTP_403_FORBIDDEN, response.status_code)
+        self.assertEqual({'detail': ErrorDetail(string='У вас недостаточно прав для выполнения данного действия.',
+                                                code='permission_denied')}, response.data)
+        self.wicker_1.refresh_from_db()
+        self.assertEqual(1500, self.wicker_1.price)
 
 
