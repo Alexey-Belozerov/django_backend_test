@@ -81,5 +81,9 @@ class WickerApiTestCase(APITestCase):
 
     def test_delete(self):
         url = reverse('wicker-detail', args=(self.wicker_1.id,))
-
+        data = {
+            'name': self.wicker_1.name,
+            'price': self.wicker_1.price,
+            'author_name': self.wicker_1.author_name
+        }
 
