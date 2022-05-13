@@ -90,4 +90,5 @@ class WickerApiTestCase(APITestCase):
         self.client.force_login(self.user)
         response = self.client.delete(url, data=json_data,
                                       content_type='application/json')
+        self.assertEqual(status.HTTP_204_NO_CONTENT, response.status_code)
 
