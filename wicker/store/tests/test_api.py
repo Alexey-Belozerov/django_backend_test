@@ -127,8 +127,6 @@ class WickerApiTestCase(APITestCase):
         response = self.client.put(url, data=json_data,
                                    content_type='application/json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
-        self.assertEqual({'detail': ErrorDetail(string='У вас недостаточно прав для выполнения данного действия.',
-                                                code='permission_denied')}, response.data)
         self.wicker_1.refresh_from_db()
         self.assertEqual(1500, self.wicker_1.price)
 
