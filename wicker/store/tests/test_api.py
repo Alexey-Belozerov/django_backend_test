@@ -87,4 +87,5 @@ class WickerApiTestCase(APITestCase):
             'author_name': self.wicker_1.author_name
         }
         json_data = json.dumps(data)
+        self.client.force_login(self.user)
 
