@@ -96,5 +96,19 @@ class WickerApiTestCase(APITestCase):
         self.assertEqual(2, Wicker.objects.all().count())
 
     def test_update_not_owner(self):
+        self.user2 = User.objects.create(username='test_username2')
+        url = reverse('wicker-detail', args=(self.wicker_1.id,))
+        data = {
+            'name': self.wicker_1.name,
+            'price': 4200,
+            'author_name': self.wicker_1.author_name
+        }
+        json_data = json.dumps(data)
+        self.client.force_login(self.user2)
+        response = self.client.put(url, data=json_data,
+                                   content_type='application/json')
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+        self.wicker_1.refresh_from_db()
+        self.assertEqual(4200, self.wicker_1.price)
 
 
