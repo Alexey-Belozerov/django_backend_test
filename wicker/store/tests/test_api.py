@@ -80,5 +80,6 @@ class WickerApiTestCase(APITestCase):
         self.assertEqual(4200, self.wicker_1.price)
 
     def test_delete(self):
+        url = reverse('wicker-detail', args=(self.wicker_1.id,))
 
 
