@@ -109,6 +109,6 @@ class WickerApiTestCase(APITestCase):
                                    content_type='application/json')
         self.assertEqual(status.HTTP_403_FORBIDDEN, response.status_code)
         self.wicker_1.refresh_from_db()
-        self.assertEqual(4200, self.wicker_1.price)
+        self.assertEqual(1500, self.wicker_1.price)
 
 
