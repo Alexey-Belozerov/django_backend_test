@@ -86,4 +86,5 @@ class WickerApiTestCase(APITestCase):
             'price': self.wicker_1.price,
             'author_name': self.wicker_1.author_name
         }
+        json_data = json.dumps(data)
 
