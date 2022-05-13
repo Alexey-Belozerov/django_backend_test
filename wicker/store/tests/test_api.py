@@ -114,4 +114,6 @@ class WickerApiTestCase(APITestCase):
         self.wicker_1.refresh_from_db()
         self.assertEqual(1500, self.wicker_1.price)
 
+    def test_update_not_owner_but_staff(self):
+
 
