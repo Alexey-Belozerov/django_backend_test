@@ -13,11 +13,11 @@ class WickerApiTestCase(APITestCase):
     def setUp(self):
         self.user = User.objects.create(username='test_username')
         self.wicker_1 = Wicker.objects.create(name='Test wicker 1', price=1500,
-                                              author_name='Author 1')
+                                              author_name='Author 1', owner=self.user)
         self.wicker_2 = Wicker.objects.create(name='Test wicker 2', price=2815,
-                                              author_name='Author 1')
+                                              author_name='Author 1', owner=self.user)
         self.wicker_3 = Wicker.objects.create(name='Test wicker 3 Author 1',
-                                              price=2815, author_name='Author 2')
+                                              price=2815, author_name='Author 2', owner=self.user)
 
     def test_get(self):
         url = reverse('wicker-list')
