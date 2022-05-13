@@ -80,6 +80,7 @@ class WickerApiTestCase(APITestCase):
         self.assertEqual(4200, self.wicker_1.price)
 
     def test_delete(self):
+        self.assertEqual(3, Wicker.objects.all().count())
         url = reverse('wicker-detail', args=(self.wicker_1.id,))
         data = {
             'name': self.wicker_1.name,
@@ -91,4 +92,5 @@ class WickerApiTestCase(APITestCase):
         response = self.client.delete(url, data=json_data,
                                       content_type='application/json')
         self.assertEqual(status.HTTP_204_NO_CONTENT, response.status_code)
+        self.assertEqual(2, Wicker.objects.all().count())
 
