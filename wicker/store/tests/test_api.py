@@ -88,4 +88,6 @@ class WickerApiTestCase(APITestCase):
         }
         json_data = json.dumps(data)
         self.client.force_login(self.user)
+        response = self.client.delete(url, data=json_data,
+                                      content_type='application/json')
 
