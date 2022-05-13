@@ -94,3 +94,7 @@ class WickerApiTestCase(APITestCase):
                                       content_type='application/json')
         self.assertEqual(status.HTTP_204_NO_CONTENT, response.status_code)
         self.assertEqual(2, Wicker.objects.all().count())
+
+    def test_update_not_owner(self):
+
+
