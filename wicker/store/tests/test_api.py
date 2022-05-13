@@ -78,3 +78,7 @@ class WickerApiTestCase(APITestCase):
         self.assertEqual(status.HTTP_200_OK, response.status_code)
         self.wicker_1.refresh_from_db()
         self.assertEqual(4200, self.wicker_1.price)
+
+    def test_delete(self):
+
+
