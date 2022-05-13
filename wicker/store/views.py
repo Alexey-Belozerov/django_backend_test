@@ -17,6 +17,10 @@ class WickerViewSet(ModelViewSet):
     search_fields = ['name', 'author_name']
     ordering_fields = ['price', 'author_name']
 
+    def perform_create(self, serializer):
+        serializer.validated_data['owner'] = self.request.user
+        serializer.save()
+
 
 def auth(request):
     return render(request, 'oauth.html')
