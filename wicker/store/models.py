@@ -18,3 +18,5 @@ class Wicker(models.Model):
 
 
 class UserWickerRelation(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    wicker = models.ForeignKey(Wicker, on_delete=models.CASCADE)
