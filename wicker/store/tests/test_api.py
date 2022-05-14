@@ -150,6 +150,20 @@ class UserWickerRelationTestCase(APITestCase):
         response = self.client.patch(url, data=json_data,
                                      content_type='application/json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
-        relations = UserWickerRelation.objects.get(user=self.user,
+        relation = UserWickerRelation.objects.get(user=self.user,
                                                    wicker=self.wicker_1)
-        self.assertTrue(relations.like)
+        self.assertTrue(relation.like)
+
+    def test_in_bookmarks(self):
+        url = reverse('userwickerrelation-detail', args=(self.wicker_1.id,))
+        data = {
+            'in_bookmarks': True,
+        }
+        json_data = json.dumps(data)
+        self.client.force_login(self.user)
+        response = self.client.patch(url, data=json_data,
+                                     content_type='application/json')
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+        relation = UserWickerRelation.objects.get(user=self.user,
+                                                  wicker=self.wicker_1)
+        self.assertTrue(relation.in_bookmarks)
