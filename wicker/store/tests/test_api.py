@@ -130,24 +130,24 @@ class WickerApiTestCase(APITestCase):
         self.wicker_1.refresh_from_db()
         self.assertEqual(4200, self.wicker_1.price)
 
-    class UserWickerRelationTestCase(APITestCase):
-        def setUp(self):
-            self.user = User.objects.create(username='test_username')
-            self.user2 = User.objects.create(username='test_username2')
-            self.wicker_1 = Wicker.objects.create(name='Test wicker 1', price=1500,
-                                                  author_name='Author 1', owner=self.user)
-            self.wicker_2 = Wicker.objects.create(name='Test wicker 2', price=2815,
-                                                  author_name='Author 1', owner=self.user)
+class UserWickerRelationTestCase(APITestCase):
+    def setUp(self):
+        self.user = User.objects.create(username='test_username')
+        self.user2 = User.objects.create(username='test_username2')
+        self.wicker_1 = Wicker.objects.create(name='Test wicker 1', price=1500,
+                                              author_name='Author 1', owner=self.user)
+        self.wicker_2 = Wicker.objects.create(name='Test wicker 2', price=2815,
+                                              author_name='Author 1', owner=self.user)
 
-        def test_like(self):
-            url = reverse('userwickerrelation-detail', args=(self.wicker_1.id,))
-            data = {
-                'like': True,
-            }
-            json_data = json.dumps(data)
-            self.client.force_login(self.user)
-            response = self.client.patch(url, data=json_data,
-                                         content_type='application/json')
-            self.assertEqual(status.HTTP_200_OK, response.status_code)
-            self.wicker_1.refresh_from_db()
-            self.assertTrue(self.wicker_1.like)
+    def test_like(self):
+        url = reverse('userwickerrelation-detail', args=(self.wicker_1.id,))
+        data = {
+            'like': True,
+        }
+        json_data = json.dumps(data)
+        self.client.force_login(self.user)
+        response = self.client.patch(url, data=json_data,
+                                     content_type='application/json')
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+        self.wicker_1.refresh_from_db()
+        self.assertTrue(self.wicker_1.like)
