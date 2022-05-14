@@ -188,5 +188,7 @@ class UserWickerRelationTestCase(APITestCase):
             'rate': 5,
         }
         json_data = json.dumps(data)
+        response = self.client.patch(url, data=json_data,
+                                     content_type='application/json')
 
 
