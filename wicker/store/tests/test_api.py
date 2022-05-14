@@ -183,4 +183,5 @@ class UserWickerRelationTestCase(APITestCase):
         self.assertEqual(5, relation.rate)
 
     def test_rate_wrong(self):
+        url = reverse('userwickerrelation-detail', args=(self.wicker_1.id,))
 
