@@ -140,7 +140,7 @@ class WickerApiTestCase(APITestCase):
                                                   author_name='Author 1', owner=self.user)
 
         def test_get(self):
-            url = reverse('userwickerrelation-detail')
+            url = reverse('userwickerrelation-detail', args=(self.wicker_1.id,))
             data = {
                 'like': True,
             }
@@ -148,4 +148,5 @@ class WickerApiTestCase(APITestCase):
             self.client.force_login(self.user)
             response = self.client.patch(url, data=json_data,
                                          content_type='application/json')
+            self.assertTrue()
             self.assertEqual(status.HTTP_200_OK, response.status_code)
