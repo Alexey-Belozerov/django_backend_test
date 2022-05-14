@@ -178,4 +178,6 @@ class UserWickerRelationTestCase(APITestCase):
         response = self.client.patch(url, data=json_data,
                                      content_type='application/json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
+        relation = UserWickerRelation.objects.get(user=self.user,
+                                                  wicker=self.wicker_1)
 
