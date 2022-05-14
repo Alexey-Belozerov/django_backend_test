@@ -5,7 +5,7 @@ from rest_framework.mixins import UpdateModelMixin
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 
-from store.models import Wicker
+from store.models import Wicker, UserWickerRelation
 from store.permissions import IsOwnerOrStaffOrReadOnly
 from store.serializers import WickerSerializer
 
@@ -26,6 +26,7 @@ class WickerViewSet(ModelViewSet):
 
 class UserWickerRelationViewSet(UpdateModelMixin, GenericViewSet):
     permission_classes = [IsAuthenticated]
+    queryset = UserWickerRelation.objects.all()
 
 
 
