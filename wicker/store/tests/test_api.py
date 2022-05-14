@@ -167,3 +167,5 @@ class UserWickerRelationTestCase(APITestCase):
         relation = UserWickerRelation.objects.get(user=self.user,
                                                   wicker=self.wicker_1)
         self.assertTrue(relation.in_bookmarks)
+
+    def test_rate(self):
