@@ -174,3 +174,5 @@ class UserWickerRelationTestCase(APITestCase):
             'rate': 5,
         }
         json_data = json.dumps(data)
+        self.client.force_login(self.user)
+
