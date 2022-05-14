@@ -182,3 +182,5 @@ class UserWickerRelationTestCase(APITestCase):
                                                   wicker=self.wicker_1)
         self.assertEqual(5, relation.rate)
 
+    def test_rate_wrong(self):
+
