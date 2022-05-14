@@ -190,5 +190,4 @@ class UserWickerRelationTestCase(APITestCase):
         json_data = json.dumps(data)
         response = self.client.patch(url, data=json_data,
                                      content_type='application/json')
-
-
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
