@@ -180,4 +180,5 @@ class UserWickerRelationTestCase(APITestCase):
         self.assertEqual(status.HTTP_200_OK, response.status_code)
         relation = UserWickerRelation.objects.get(user=self.user,
                                                   wicker=self.wicker_1)
+        self.assertEqual(5, relation.rate)
 
