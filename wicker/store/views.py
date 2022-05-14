@@ -30,6 +30,11 @@ class UserWickerRelationViewSet(UpdateModelMixin, GenericViewSet):
     serializer_class = UserWickerRelationSerializer
     lookup_field = 'wicker'
 
+    def get_object(self):
+        obj, _ = UserWickerRelation.objects.get_or_create(user=self.request.user,
+                                                          wicker_id=self.kwargs['wicker'])
+        return obj
+
 
 def auth(request):
     return render(request, 'oauth.html')

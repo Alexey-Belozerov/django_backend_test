@@ -130,6 +130,7 @@ class WickerApiTestCase(APITestCase):
         self.wicker_1.refresh_from_db()
         self.assertEqual(4200, self.wicker_1.price)
 
+
 class UserWickerRelationTestCase(APITestCase):
     def setUp(self):
         self.user = User.objects.create(username='test_username')
