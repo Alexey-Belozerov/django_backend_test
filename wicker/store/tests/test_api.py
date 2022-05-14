@@ -133,6 +133,7 @@ class WickerApiTestCase(APITestCase):
     class UserWickerRelationTestCase(APITestCase):
         def setUp(self):
             self.user = User.objects.create(username='test_username')
+            self.user2 = User.objects.create(username='test_username2')
             self.wicker_1 = Wicker.objects.create(name='Test wicker 1', price=1500,
                                                   author_name='Author 1', owner=self.user)
             self.wicker_2 = Wicker.objects.create(name='Test wicker 2', price=2815,
