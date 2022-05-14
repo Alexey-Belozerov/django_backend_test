@@ -32,3 +32,6 @@ class UserWickerRelation(models.Model):
     in_bookmarks = models.BooleanField(default=False)
     rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES, null=True)
 
+    class Meta:
+        verbose_name = 'Отношение Юзер Корзинка'
+        verbose_name_plural = 'Отношение Юзеры Корзинки'
