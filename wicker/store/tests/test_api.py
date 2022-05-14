@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework.exceptions import ErrorDetail
 from rest_framework.test import APITestCase
 
-from store.models import Wicker
+from store.models import Wicker, UserWickerRelation
 from store.serializers import WickerSerializer
 
 
@@ -150,5 +150,6 @@ class UserWickerRelationTestCase(APITestCase):
         response = self.client.patch(url, data=json_data,
                                      content_type='application/json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
-
-        self.assertTrue(self.wicker_1.like)
+        relations = UserWickerRelation.objects.get(user=self.user,
+                                                   wicker=self.wicker_1)
+        self.assertTrue(relations.like)
