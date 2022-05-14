@@ -35,3 +35,6 @@ class UserWickerRelation(models.Model):
     class Meta:
         verbose_name = 'Отношение Юзер Корзинка'
         verbose_name_plural = 'Отношение Юзеры Корзинки'
+
+    def __str__(self):
+        return f'{self.user.username}: {self.wicker}, {self.rate}'
