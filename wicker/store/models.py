@@ -7,8 +7,9 @@ class Wicker(models.Model):
     price = models.DecimalField('Цена', max_digits=7, decimal_places=2)
     author_name = models.CharField('Автор изделия', max_length=255)
     owner = models.ForeignKey(User, on_delete=models.SET_NULL,
-                              null=True)
-    readers = models.ForeignKey(User, )
+                              null=True, related_name='my_wickers')
+    readers = models.ManyToManyField(User, through='UserWickerRelation',
+                                     related_name='wickers')
 
     class Meta:
         verbose_name = 'Корзинка'
