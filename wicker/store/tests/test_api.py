@@ -173,3 +173,4 @@ class UserWickerRelationTestCase(APITestCase):
         data = {
             'rate': 5,
         }
+        json_data = json.dumps(data)
