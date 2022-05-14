@@ -28,6 +28,7 @@ class UserWickerRelationViewSet(UpdateModelMixin, GenericViewSet):
     permission_classes = [IsAuthenticated]
     queryset = UserWickerRelation.objects.all()
     serializer_class = UserWickerRelationSerializer
+    lookup_field = 'wicker'
 
 
 def auth(request):
