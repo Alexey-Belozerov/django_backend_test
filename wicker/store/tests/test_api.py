@@ -177,4 +177,5 @@ class UserWickerRelationTestCase(APITestCase):
         self.client.force_login(self.user)
         response = self.client.patch(url, data=json_data,
                                      content_type='application/json')
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
 
