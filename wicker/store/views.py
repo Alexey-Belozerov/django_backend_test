@@ -7,7 +7,7 @@ from rest_framework.viewsets import ModelViewSet, GenericViewSet
 
 from store.models import Wicker, UserWickerRelation
 from store.permissions import IsOwnerOrStaffOrReadOnly
-from store.serializers import WickerSerializer
+from store.serializers import WickerSerializer, UserWickerRelationSerializer
 
 
 class WickerViewSet(ModelViewSet):
@@ -27,7 +27,7 @@ class WickerViewSet(ModelViewSet):
 class UserWickerRelationViewSet(UpdateModelMixin, GenericViewSet):
     permission_classes = [IsAuthenticated]
     queryset = UserWickerRelation.objects.all()
-
+    serializer_class = UserWickerRelationSerializer
 
 
 def auth(request):
