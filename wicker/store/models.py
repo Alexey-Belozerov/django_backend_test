@@ -18,8 +18,17 @@ class Wicker(models.Model):
 
 
 class UserWickerRelation(models.Model):
+    RATE_CHOICES = (
+        (1, 'Хорошая'),
+        (2, 'Симпатичная'),
+        (3, 'Классная'),
+        (4, 'Удивительная'),
+        (5, 'Отличная'),
+        (6, 'Супер'),
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     wicker = models.ForeignKey(Wicker, on_delete=models.CASCADE)
     like = models.BooleanField(default=False)
     in_bookmarks = models.BooleanField(default=False)
+    rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES, null=True)
 
