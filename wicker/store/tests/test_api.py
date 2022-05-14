@@ -150,5 +150,5 @@ class UserWickerRelationTestCase(APITestCase):
         response = self.client.patch(url, data=json_data,
                                      content_type='application/json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
-        self.wicker_1.refresh_from_db()
+
         self.assertTrue(self.wicker_1.like)
