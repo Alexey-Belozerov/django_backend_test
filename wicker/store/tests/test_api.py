@@ -140,7 +140,7 @@ class WickerApiTestCase(APITestCase):
                                                   author_name='Author 1', owner=self.user)
 
         def test_get(self):
-            url = reverse('wicker-list')
+            url = reverse('userwickerrelation-detail')
             response = self.client.get(url)
             serializer_data = WickerSerializer([self.wicker_1, self.wicker_2, self.wicker_3], many=True).data
             self.assertEqual(status.HTTP_200_OK, response.status_code)
