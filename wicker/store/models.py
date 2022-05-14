@@ -37,4 +37,4 @@ class UserWickerRelation(models.Model):
         verbose_name_plural = 'Отношение Юзеры Корзинки'
 
     def __str__(self):
-        return f'{self.user.username}: {self.wicker}, Рейтинг: {self.rate}'
+        return f'{self.user.username}: {self.wicker.name}, Рейтинг: {self.rate}'
