@@ -8,6 +8,7 @@ class Wicker(models.Model):
     author_name = models.CharField('Автор изделия', max_length=255)
     owner = models.ForeignKey(User, on_delete=models.SET_NULL,
                               null=True)
+    readers = models.ForeignKey(User, )
 
     class Meta:
         verbose_name = 'Корзинка'
