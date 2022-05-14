@@ -169,3 +169,7 @@ class UserWickerRelationTestCase(APITestCase):
         self.assertTrue(relation.in_bookmarks)
 
     def test_rate(self):
+        url = reverse('userwickerrelation-detail', args=(self.wicker_1.id,))
+        data = {
+            'rate': 5,
+        }
