@@ -184,4 +184,9 @@ class UserWickerRelationTestCase(APITestCase):
 
     def test_rate_wrong(self):
         url = reverse('userwickerrelation-detail', args=(self.wicker_1.id,))
+        data = {
+            'rate': 5,
+        }
+        json_data = json.dumps(data)
+
 
