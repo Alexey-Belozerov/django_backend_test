@@ -15,3 +15,6 @@ class Wicker(models.Model):
 
     def __str__(self):
         return f'Id {self.id}: {self.name}'
+
+
+class UserWickerRelation(models.Model):
